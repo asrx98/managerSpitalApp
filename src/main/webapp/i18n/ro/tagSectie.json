@@ -1,0 +1,10 @@
+{
+  "managerSpitalApp": {
+    "TagSectie": {
+      "null": "",
+      "TESA": "TESA",
+      "SPITAL": "SPITAL",
+      "AMBULATORIU": "AMBULATORIU"
+    }
+  }
+}

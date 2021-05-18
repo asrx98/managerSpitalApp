@@ -1,0 +1,14 @@
+{
+  "managerSpitalApp": {
+    "TagInventar": {
+      "null": "",
+      "MEDICAMENT": "MEDICAMENT",
+      "APARATURA": "APARATURA",
+      "MEDICALA": "MEDICALA",
+      "ECHIPAMENT": "ECHIPAMENT",
+      "MEDICAL": "MEDICAL",
+      "TESA": "TESA",
+      "ALTELE": "ALTELE"
+    }
+  }
+}

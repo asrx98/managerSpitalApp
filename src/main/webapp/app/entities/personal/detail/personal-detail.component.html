@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="personal">
+      <h2 data-cy="personalDetailsHeading"><span jhiTranslate="managerSpitalApp.personal.detail.title">Personal</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ personal.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="managerSpitalApp.personal.pacientId">Pacient Id</span></dt>
+        <dd>
+          <span>{{ personal.pacientId }}</span>
+        </dd>
+        <dt><span jhiTranslate="managerSpitalApp.personal.nume">Nume</span></dt>
+        <dd>
+          <span>{{ personal.nume }}</span>
+        </dd>
+        <dt><span jhiTranslate="managerSpitalApp.personal.prenume">Prenume</span></dt>
+        <dd>
+          <span>{{ personal.prenume }}</span>
+        </dd>
+        <dt><span jhiTranslate="managerSpitalApp.personal.sectieId">Sectie Id</span></dt>
+        <dd>
+          <span>{{ personal.sectieId }}</span>
+        </dd>
+        <dt><span jhiTranslate="managerSpitalApp.personal.tag">Tag</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'managerSpitalApp.TagPersonal.' + personal.tag }}">{{ personal.tag }}</span>
+        </dd>
+        <dt><span jhiTranslate="managerSpitalApp.personal.personalId">Personal Id</span></dt>
+        <dd>
+          <div *ngIf="personal.personalId">
+            <a [routerLink]="['/sectie', personal.personalId?.id, 'view']">{{ personal.personalId?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="managerSpitalApp.personal.sectie">Sectie</span></dt>
+        <dd>
+          <div *ngIf="personal.sectie">
+            <a [routerLink]="['/sectie', personal.sectie?.id, 'view']">{{ personal.sectie?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/personal', personal.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

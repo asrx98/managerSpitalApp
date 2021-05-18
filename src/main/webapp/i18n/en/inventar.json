@@ -1,0 +1,28 @@
+{
+  "managerSpitalApp": {
+    "inventar": {
+      "home": {
+        "title": "Inventars",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Inventar",
+        "createOrEditLabel": "Create or edit a Inventar",
+        "search": "Search for Inventar",
+        "notFound": "No Inventars found"
+      },
+      "created": "A new Inventar is created with identifier {{ param }}",
+      "updated": "A Inventar is updated with identifier {{ param }}",
+      "deleted": "A Inventar is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Inventar {{ id }}?"
+      },
+      "detail": {
+        "title": "Inventar"
+      },
+      "id": "ID",
+      "inventarId": "Inventar Id",
+      "nume": "Nume",
+      "stoc": "Stoc",
+      "tag": "Tag"
+    }
+  }
+}

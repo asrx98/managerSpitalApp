@@ -1,0 +1,32 @@
+{
+  "managerSpitalApp": {
+    "personal": {
+      "home": {
+        "title": "Personals",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Creeare o nouă entitate Personal",
+        "createOrEditLabel": "Creeare sau editare Personal",
+        "search": "Căutare după Personal",
+        "notFound": "No Personals found"
+      },
+      "created": "A fost creată o nouă entitate Personal cu identificatorul {{ param }}",
+      "updated": "Personal cu identificatorul {{ param }} a fost actualizată",
+      "deleted": "Personal cu identificatorul {{ param }} a fost ștearsă",
+      "delete": {
+        "question": "Sunteți sigur că doriți să ștergeți Personal {{ id }}?"
+      },
+      "detail": {
+        "title": "Personal"
+      },
+      "id": "ID",
+      "pacientId": "Pacient Id",
+      "nume": "Nume",
+      "prenume": "Prenume",
+      "sectieId": "Sectie Id",
+      "tag": "Tag",
+      "personalId": "Personal Id",
+      "personalId": "Personal Id",
+      "sectie": "Sectie"
+    }
+  }
+}

@@ -1,0 +1,72 @@
+
+entity Inventar {
+    inventarId Long required,
+	nume String required,
+    stoc Integer required,
+    tag TagInventar required
+}
+
+entity Pacient {
+	pacientId Long required,
+	nume String required,
+    prenume String required,
+    sectieId String required,
+    salonId String required
+    
+}
+
+entity Personal {
+	pacientId Long required,
+	nume String required,
+    prenume String required, 
+    sectieId String required,
+    tag TagPersonal required
+}
+
+entity Sectie {
+	sectieId Long required,
+    nume String required,
+    sefId String required,
+    tag TagSectie required,
+    nrPaturi Integer required
+}
+
+entity Salon {
+	salonId Long,
+	sectieId Long
+}
+
+enum TagPersonal {
+    TESA, PSA, PSS, APS, MR, PSM
+}
+
+enum TagInventar {
+    MEDICAMENT, APARATURA MEDICALA, ECHIPAMENT MEDICAL, ECHIPAMENT TESA, ALTELE
+}
+
+enum TagSectie {
+    TESA, SPITAL, AMBULATORIU
+}
+
+relationship OneToMany {
+	Personal{personalId} to Pacient
+}
+
+relationship OneToMany {
+	Sectie{sectieId} to Pacient
+}
+
+relationship OneToMany {
+	Sectie{sectieId} to Personal
+}
+
+relationship OneToMany {
+	Salon{salonId} to Pacient
+}
+
+relationship OneToOne {
+	Personal{personalId} to Sectie{sefId}
+}
+paginate Personal, Pacient, Sectie, Inventar with pagination
+
+

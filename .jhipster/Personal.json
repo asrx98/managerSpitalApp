@@ -1,0 +1,62 @@
+{
+  "name": "Personal",
+  "fields": [
+    {
+      "fieldName": "pacientId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nume",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "prenume",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "sectieId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "tag",
+      "fieldType": "TagPersonal",
+      "fieldValues": "TESA,PSA,PSS,APS,MR,PSM",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "sectie",
+      "otherEntityRelationshipName": "sefId",
+      "relationshipName": "personalId",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "pacient",
+      "otherEntityRelationshipName": "personal",
+      "relationshipName": "personalId"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "sectie",
+      "otherEntityRelationshipName": "sectieId",
+      "relationshipName": "sectie"
+    }
+  ],
+  "entityTableName": "personal",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210518092933"
+}

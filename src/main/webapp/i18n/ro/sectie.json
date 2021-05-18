@@ -1,0 +1,32 @@
+{
+  "managerSpitalApp": {
+    "sectie": {
+      "home": {
+        "title": "Secties",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Creeare o nouă entitate Sectie",
+        "createOrEditLabel": "Creeare sau editare Sectie",
+        "search": "Căutare după Sectie",
+        "notFound": "No Secties found"
+      },
+      "created": "A fost creată o nouă entitate Sectie cu identificatorul {{ param }}",
+      "updated": "Sectie cu identificatorul {{ param }} a fost actualizată",
+      "deleted": "Sectie cu identificatorul {{ param }} a fost ștearsă",
+      "delete": {
+        "question": "Sunteți sigur că doriți să ștergeți Sectie {{ id }}?"
+      },
+      "detail": {
+        "title": "Sectie"
+      },
+      "id": "ID",
+      "sectieId": "Sectie Id",
+      "nume": "Nume",
+      "sefId": "Sef Id",
+      "tag": "Tag",
+      "nrPaturi": "Nr Paturi",
+      "sectieId": "Sectie Id",
+      "sectieId": "Sectie Id",
+      "sefId": "Sef Id"
+    }
+  }
+}

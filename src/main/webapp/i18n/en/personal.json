@@ -1,0 +1,32 @@
+{
+  "managerSpitalApp": {
+    "personal": {
+      "home": {
+        "title": "Personals",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Personal",
+        "createOrEditLabel": "Create or edit a Personal",
+        "search": "Search for Personal",
+        "notFound": "No Personals found"
+      },
+      "created": "A new Personal is created with identifier {{ param }}",
+      "updated": "A Personal is updated with identifier {{ param }}",
+      "deleted": "A Personal is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Personal {{ id }}?"
+      },
+      "detail": {
+        "title": "Personal"
+      },
+      "id": "ID",
+      "pacientId": "Pacient Id",
+      "nume": "Nume",
+      "prenume": "Prenume",
+      "sectieId": "Sectie Id",
+      "tag": "Tag",
+      "personalId": "Personal Id",
+      "personalId": "Personal Id",
+      "sectie": "Sectie"
+    }
+  }
+}

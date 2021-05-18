@@ -50,6 +50,14 @@ public class CacheConfiguration {
             createCache(cm, com.ar.mangerspital.domain.User.class.getName() + ".authorities");
             createCache(cm, com.ar.mangerspital.domain.PersistentToken.class.getName());
             createCache(cm, com.ar.mangerspital.domain.User.class.getName() + ".persistentTokens");
+            createCache(cm, com.ar.mangerspital.domain.Inventar.class.getName());
+            createCache(cm, com.ar.mangerspital.domain.Pacient.class.getName());
+            createCache(cm, com.ar.mangerspital.domain.Personal.class.getName());
+            createCache(cm, com.ar.mangerspital.domain.Personal.class.getName() + ".personalIds");
+            createCache(cm, com.ar.mangerspital.domain.Sectie.class.getName());
+            createCache(cm, com.ar.mangerspital.domain.Sectie.class.getName() + ".sectieIds");
+            createCache(cm, com.ar.mangerspital.domain.Salon.class.getName());
+            createCache(cm, com.ar.mangerspital.domain.Salon.class.getName() + ".salonIds");
             // jhipster-needle-ehcache-add-entry
         };
     }
