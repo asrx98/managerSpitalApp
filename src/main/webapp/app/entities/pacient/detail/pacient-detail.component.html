@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="pacient">
+      <h2 data-cy="pacientDetailsHeading"><span jhiTranslate="managerSpitalApp.pacient.detail.title">Pacient</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ pacient.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="managerSpitalApp.pacient.pacientId">Pacient Id</span></dt>
+        <dd>
+          <span>{{ pacient.pacientId }}</span>
+        </dd>
+        <dt><span jhiTranslate="managerSpitalApp.pacient.nume">Nume</span></dt>
+        <dd>
+          <span>{{ pacient.nume }}</span>
+        </dd>
+        <dt><span jhiTranslate="managerSpitalApp.pacient.prenume">Prenume</span></dt>
+        <dd>
+          <span>{{ pacient.prenume }}</span>
+        </dd>
+        <dt><span jhiTranslate="managerSpitalApp.pacient.sectieId">Sectie Id</span></dt>
+        <dd>
+          <span>{{ pacient.sectieId }}</span>
+        </dd>
+        <dt><span jhiTranslate="managerSpitalApp.pacient.salonId">Salon Id</span></dt>
+        <dd>
+          <span>{{ pacient.salonId }}</span>
+        </dd>
+        <dt><span jhiTranslate="managerSpitalApp.pacient.personal">Personal</span></dt>
+        <dd>
+          <div *ngIf="pacient.personal">
+            <a [routerLink]="['/personal', pacient.personal?.id, 'view']">{{ pacient.personal?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="managerSpitalApp.pacient.sectie">Sectie</span></dt>
+        <dd>
+          <div *ngIf="pacient.sectie">
+            <a [routerLink]="['/sectie', pacient.sectie?.id, 'view']">{{ pacient.sectie?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="managerSpitalApp.pacient.salon">Salon</span></dt>
+        <dd>
+          <div *ngIf="pacient.salon">
+            <a [routerLink]="['/salon', pacient.salon?.id, 'view']">{{ pacient.salon?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/pacient', pacient.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

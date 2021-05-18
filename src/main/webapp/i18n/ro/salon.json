@@ -1,0 +1,27 @@
+{
+  "managerSpitalApp": {
+    "salon": {
+      "home": {
+        "title": "Salons",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Creeare o nouă entitate Salon",
+        "createOrEditLabel": "Creeare sau editare Salon",
+        "search": "Căutare după Salon",
+        "notFound": "No Salons found"
+      },
+      "created": "A fost creată o nouă entitate Salon cu identificatorul {{ param }}",
+      "updated": "Salon cu identificatorul {{ param }} a fost actualizată",
+      "deleted": "Salon cu identificatorul {{ param }} a fost ștearsă",
+      "delete": {
+        "question": "Sunteți sigur că doriți să ștergeți Salon {{ id }}?"
+      },
+      "detail": {
+        "title": "Salon"
+      },
+      "id": "ID",
+      "salonId": "Salon Id",
+      "sectieId": "Sectie Id",
+      "salonId": "Salon Id"
+    }
+  }
+}

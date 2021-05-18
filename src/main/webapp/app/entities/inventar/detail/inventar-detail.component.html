@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="inventar">
+      <h2 data-cy="inventarDetailsHeading"><span jhiTranslate="managerSpitalApp.inventar.detail.title">Inventar</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ inventar.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="managerSpitalApp.inventar.inventarId">Inventar Id</span></dt>
+        <dd>
+          <span>{{ inventar.inventarId }}</span>
+        </dd>
+        <dt><span jhiTranslate="managerSpitalApp.inventar.nume">Nume</span></dt>
+        <dd>
+          <span>{{ inventar.nume }}</span>
+        </dd>
+        <dt><span jhiTranslate="managerSpitalApp.inventar.stoc">Stoc</span></dt>
+        <dd>
+          <span>{{ inventar.stoc }}</span>
+        </dd>
+        <dt><span jhiTranslate="managerSpitalApp.inventar.tag">Tag</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'managerSpitalApp.TagInventar.' + inventar.tag }}">{{ inventar.tag }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/inventar', inventar.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

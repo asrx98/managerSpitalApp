@@ -1,0 +1,31 @@
+{
+  "name": "Salon",
+  "fields": [
+    {
+      "fieldName": "salonId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "sectieId",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "pacient",
+      "otherEntityRelationshipName": "salon",
+      "relationshipName": "salonId"
+    }
+  ],
+  "entityTableName": "salon",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210518092935"
+}

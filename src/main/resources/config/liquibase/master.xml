@@ -15,7 +15,14 @@
     <property name="datetimeType" value="datetime" dbms="oracle, mssql, postgresql, h2"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210518092931_added_entity_Inventar.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210518092932_added_entity_Pacient.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210518092933_added_entity_Personal.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210518092934_added_entity_Sectie.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210518092935_added_entity_Salon.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20210518092932_added_entity_constraints_Pacient.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210518092933_added_entity_constraints_Personal.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

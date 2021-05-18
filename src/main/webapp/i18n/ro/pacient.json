@@ -1,0 +1,32 @@
+{
+  "managerSpitalApp": {
+    "pacient": {
+      "home": {
+        "title": "Pacients",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Creeare o nouă entitate Pacient",
+        "createOrEditLabel": "Creeare sau editare Pacient",
+        "search": "Căutare după Pacient",
+        "notFound": "No Pacients found"
+      },
+      "created": "A fost creată o nouă entitate Pacient cu identificatorul {{ param }}",
+      "updated": "Pacient cu identificatorul {{ param }} a fost actualizată",
+      "deleted": "Pacient cu identificatorul {{ param }} a fost ștearsă",
+      "delete": {
+        "question": "Sunteți sigur că doriți să ștergeți Pacient {{ id }}?"
+      },
+      "detail": {
+        "title": "Pacient"
+      },
+      "id": "ID",
+      "pacientId": "Pacient Id",
+      "nume": "Nume",
+      "prenume": "Prenume",
+      "sectieId": "Sectie Id",
+      "salonId": "Salon Id",
+      "personal": "Personal",
+      "sectie": "Sectie",
+      "salon": "Salon"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "managerSpitalApp": {
+    "inventar": {
+      "home": {
+        "title": "Inventars",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Creeare o nouă entitate Inventar",
+        "createOrEditLabel": "Creeare sau editare Inventar",
+        "search": "Căutare după Inventar",
+        "notFound": "No Inventars found"
+      },
+      "created": "A fost creată o nouă entitate Inventar cu identificatorul {{ param }}",
+      "updated": "Inventar cu identificatorul {{ param }} a fost actualizată",
+      "deleted": "Inventar cu identificatorul {{ param }} a fost ștearsă",
+      "delete": {
+        "question": "Sunteți sigur că doriți să ștergeți Inventar {{ id }}?"
+      },
+      "detail": {
+        "title": "Inventar"
+      },
+      "id": "ID",
+      "inventarId": "Inventar Id",
+      "nume": "Nume",
+      "stoc": "Stoc",
+      "tag": "Tag"
+    }
+  }
+}

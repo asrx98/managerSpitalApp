@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="sectie">
+      <h2 data-cy="sectieDetailsHeading"><span jhiTranslate="managerSpitalApp.sectie.detail.title">Sectie</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ sectie.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="managerSpitalApp.sectie.sectieId">Sectie Id</span></dt>
+        <dd>
+          <span>{{ sectie.sectieId }}</span>
+        </dd>
+        <dt><span jhiTranslate="managerSpitalApp.sectie.nume">Nume</span></dt>
+        <dd>
+          <span>{{ sectie.nume }}</span>
+        </dd>
+        <dt><span jhiTranslate="managerSpitalApp.sectie.sefId">Sef Id</span></dt>
+        <dd>
+          <span>{{ sectie.sefId }}</span>
+        </dd>
+        <dt><span jhiTranslate="managerSpitalApp.sectie.tag">Tag</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'managerSpitalApp.TagSectie.' + sectie.tag }}">{{ sectie.tag }}</span>
+        </dd>
+        <dt><span jhiTranslate="managerSpitalApp.sectie.nrPaturi">Nr Paturi</span></dt>
+        <dd>
+          <span>{{ sectie.nrPaturi }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/sectie', sectie.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

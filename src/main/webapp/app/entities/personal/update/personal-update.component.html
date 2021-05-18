@@ -1,0 +1,137 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-personal-heading" data-cy="PersonalCreateUpdateHeading" jhiTranslate="managerSpitalApp.personal.home.createOrEditLabel">
+        Create or edit a Personal
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="managerSpitalApp.personal.pacientId" for="field_pacientId">Pacient Id</label>
+          <input type="number" class="form-control" name="pacientId" id="field_pacientId" data-cy="pacientId" formControlName="pacientId" />
+          <div *ngIf="editForm.get('pacientId')!.invalid && (editForm.get('pacientId')!.dirty || editForm.get('pacientId')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('pacientId')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('pacientId')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="managerSpitalApp.personal.nume" for="field_nume">Nume</label>
+          <input type="text" class="form-control" name="nume" id="field_nume" data-cy="nume" formControlName="nume" />
+          <div *ngIf="editForm.get('nume')!.invalid && (editForm.get('nume')!.dirty || editForm.get('nume')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('nume')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="managerSpitalApp.personal.prenume" for="field_prenume">Prenume</label>
+          <input type="text" class="form-control" name="prenume" id="field_prenume" data-cy="prenume" formControlName="prenume" />
+          <div *ngIf="editForm.get('prenume')!.invalid && (editForm.get('prenume')!.dirty || editForm.get('prenume')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('prenume')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="managerSpitalApp.personal.sectieId" for="field_sectieId">Sectie Id</label>
+          <input type="text" class="form-control" name="sectieId" id="field_sectieId" data-cy="sectieId" formControlName="sectieId" />
+          <div *ngIf="editForm.get('sectieId')!.invalid && (editForm.get('sectieId')!.dirty || editForm.get('sectieId')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('sectieId')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="managerSpitalApp.personal.tag" for="field_tag">Tag</label>
+          <select class="form-control" name="tag" formControlName="tag" id="field_tag" data-cy="tag">
+            <option [ngValue]="null">{{ 'managerSpitalApp.TagPersonal.null' | translate }}</option>
+            <option value="TESA">{{ 'managerSpitalApp.TagPersonal.TESA' | translate }}</option>
+            <option value="PSA">{{ 'managerSpitalApp.TagPersonal.PSA' | translate }}</option>
+            <option value="PSS">{{ 'managerSpitalApp.TagPersonal.PSS' | translate }}</option>
+            <option value="APS">{{ 'managerSpitalApp.TagPersonal.APS' | translate }}</option>
+            <option value="MR">{{ 'managerSpitalApp.TagPersonal.MR' | translate }}</option>
+            <option value="PSM">{{ 'managerSpitalApp.TagPersonal.PSM' | translate }}</option>
+          </select>
+          <div *ngIf="editForm.get('tag')!.invalid && (editForm.get('tag')!.dirty || editForm.get('tag')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('tag')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="managerSpitalApp.personal.personalId" for="field_personalId">Personal Id</label>
+          <select class="form-control" id="field_personalId" data-cy="personalId" name="personalId" formControlName="personalId">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="sectieOption.id === editForm.get('personalId')!.value?.id ? editForm.get('personalId')!.value : sectieOption"
+              *ngFor="let sectieOption of personalIdsCollection; trackBy: trackSectieById"
+            >
+              {{ sectieOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="managerSpitalApp.personal.sectie" for="field_sectie">Sectie</label>
+          <select class="form-control" id="field_sectie" data-cy="sectie" name="sectie" formControlName="sectie">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="sectieOption.id === editForm.get('sectie')!.value?.id ? editForm.get('sectie')!.value : sectieOption"
+              *ngFor="let sectieOption of sectiesSharedCollection; trackBy: trackSectieById"
+            >
+              {{ sectieOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

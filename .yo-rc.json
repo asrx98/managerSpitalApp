@@ -42,7 +42,9 @@
     "rememberMeKey": "09172156fb81c4a067c3a6e70d11db25aa244746fa006b76833cf10180445acdfba639e318f21374c1167cbdc51554cf6981",
     "clientTheme": "none",
     "clientThemeVariant": "",
-    "reactive": false
+    "reactive": false,
+    "entities": ["Inventar", "Pacient", "Personal", "Sectie", "Salon"],
+    "lastLiquibaseTimestamp": 1621330175000
   },
   "git-provider": "GitHub",
   "git-company": "asrx98",

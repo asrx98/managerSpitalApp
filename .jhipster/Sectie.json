@@ -1,0 +1,62 @@
+{
+  "name": "Sectie",
+  "fields": [
+    {
+      "fieldName": "sectieId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nume",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "sefId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "tag",
+      "fieldType": "TagSectie",
+      "fieldValues": "TESA,SPITAL,AMBULATORIU",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nrPaturi",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "pacient",
+      "otherEntityRelationshipName": "sectie",
+      "relationshipName": "sectieId"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "personal",
+      "otherEntityRelationshipName": "sectie",
+      "relationshipName": "sectieId"
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "personal",
+      "otherEntityRelationshipName": "personalId",
+      "relationshipName": "sefId",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "sectie",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210518092934"
+}

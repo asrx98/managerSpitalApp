@@ -1,0 +1,104 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-inventar-heading" data-cy="InventarCreateUpdateHeading" jhiTranslate="managerSpitalApp.inventar.home.createOrEditLabel">
+        Create or edit a Inventar
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="managerSpitalApp.inventar.inventarId" for="field_inventarId">Inventar Id</label>
+          <input
+            type="number"
+            class="form-control"
+            name="inventarId"
+            id="field_inventarId"
+            data-cy="inventarId"
+            formControlName="inventarId"
+          />
+          <div *ngIf="editForm.get('inventarId')!.invalid && (editForm.get('inventarId')!.dirty || editForm.get('inventarId')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('inventarId')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('inventarId')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="managerSpitalApp.inventar.nume" for="field_nume">Nume</label>
+          <input type="text" class="form-control" name="nume" id="field_nume" data-cy="nume" formControlName="nume" />
+          <div *ngIf="editForm.get('nume')!.invalid && (editForm.get('nume')!.dirty || editForm.get('nume')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('nume')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="managerSpitalApp.inventar.stoc" for="field_stoc">Stoc</label>
+          <input type="number" class="form-control" name="stoc" id="field_stoc" data-cy="stoc" formControlName="stoc" />
+          <div *ngIf="editForm.get('stoc')!.invalid && (editForm.get('stoc')!.dirty || editForm.get('stoc')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('stoc')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('stoc')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="managerSpitalApp.inventar.tag" for="field_tag">Tag</label>
+          <select class="form-control" name="tag" formControlName="tag" id="field_tag" data-cy="tag">
+            <option [ngValue]="null">{{ 'managerSpitalApp.TagInventar.null' | translate }}</option>
+            <option value="MEDICAMENT">{{ 'managerSpitalApp.TagInventar.MEDICAMENT' | translate }}</option>
+            <option value="APARATURA">{{ 'managerSpitalApp.TagInventar.APARATURA' | translate }}</option>
+            <option value="MEDICALA">{{ 'managerSpitalApp.TagInventar.MEDICALA' | translate }}</option>
+            <option value="ECHIPAMENT">{{ 'managerSpitalApp.TagInventar.ECHIPAMENT' | translate }}</option>
+            <option value="MEDICAL">{{ 'managerSpitalApp.TagInventar.MEDICAL' | translate }}</option>
+            <option value="TESA">{{ 'managerSpitalApp.TagInventar.TESA' | translate }}</option>
+            <option value="ALTELE">{{ 'managerSpitalApp.TagInventar.ALTELE' | translate }}</option>
+          </select>
+          <div *ngIf="editForm.get('tag')!.invalid && (editForm.get('tag')!.dirty || editForm.get('tag')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('tag')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

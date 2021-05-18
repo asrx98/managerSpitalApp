@@ -1,0 +1,153 @@
+<div>
+  <h2 id="page-heading" data-cy="PersonalHeading">
+    <span jhiTranslate="managerSpitalApp.personal.home.title">Personals</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="managerSpitalApp.personal.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-personal"
+        [routerLink]="['/personal/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span class="hidden-sm-down" jhiTranslate="managerSpitalApp.personal.home.createLabel"> Create a new Personal </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <form name="searchForm" class="form-inline">
+        <div class="input-group w-100 mt-3">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="currentSearch"
+            id="currentSearch"
+            name="currentSearch"
+            placeholder="{{ 'managerSpitalApp.personal.home.search' | translate }}"
+          />
+
+          <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+            <fa-icon icon="search"></fa-icon>
+          </button>
+
+          <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+            <fa-icon icon="trash-alt"></fa-icon>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="personals?.length === 0">
+    <span jhiTranslate="managerSpitalApp.personal.home.notFound">No personals found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="personals && personals.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="pacientId">
+            <span jhiTranslate="managerSpitalApp.personal.pacientId">Pacient Id</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="nume">
+            <span jhiTranslate="managerSpitalApp.personal.nume">Nume</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="prenume">
+            <span jhiTranslate="managerSpitalApp.personal.prenume">Prenume</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="sectieId">
+            <span jhiTranslate="managerSpitalApp.personal.sectieId">Sectie Id</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="tag"><span jhiTranslate="managerSpitalApp.personal.tag">Tag</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="personalId.id">
+            <span jhiTranslate="managerSpitalApp.personal.personalId">Personal Id</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="sectie.id">
+            <span jhiTranslate="managerSpitalApp.personal.sectie">Sectie</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let personal of personals; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/personal', personal.id, 'view']">{{ personal.id }}</a>
+          </td>
+          <td>{{ personal.pacientId }}</td>
+          <td>{{ personal.nume }}</td>
+          <td>{{ personal.prenume }}</td>
+          <td>{{ personal.sectieId }}</td>
+          <td jhiTranslate="{{ 'managerSpitalApp.TagPersonal.' + personal.tag }}">{{ personal.tag }}</td>
+          <td>
+            <div *ngIf="personal.personalId">
+              <a [routerLink]="['/sectie', personal.personalId?.id, 'view']">{{ personal.personalId?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="personal.sectie">
+              <a [routerLink]="['/sectie', personal.sectie?.id, 'view']">{{ personal.sectie?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/personal', personal.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/personal', personal.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(personal)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="personals && personals.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>
